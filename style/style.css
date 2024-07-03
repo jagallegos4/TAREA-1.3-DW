@@ -1,0 +1,18 @@
+body{
+    background: #1b0357;
+    background: linear-gradient(to right,#160470, #369ca3);
+
+}
+.ladoDerecho{
+    background-color: #19429c;
+    
+}
+
+.alto{
+    height: 100vh;
+}
+
+.bg-img{
+    background-image: url(../img/fondo-login.png);
+    background-position: center center;
+}
