@@ -20,3 +20,7 @@ body{
 .alert-danger{
     height: 10px;
 }
+
+.icono{
+    font-size: 2em;
+}
