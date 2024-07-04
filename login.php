@@ -12,10 +12,8 @@ include('model/conexion.php');
     <link rel="stylesheet" href="style/style.css">
     <title>Login</title>
 </head>
-
 <body>
-    
-    <div class="container w-75 rounded shadow mt-4">
+    <div class="container w-75 rounded shadow mt-5">
         <div class="row align-items-stretch">
             <div class="col bg-img d-none d-md-block rounded">
 
@@ -24,28 +22,27 @@ include('model/conexion.php');
                 <div class="text-center">
                     <img src="img/navegador.png" width="48" alt="" srcset="">
                 </div>
-                <h2 class="fw-bold text-center py-5 text-light">Login</h2>
+                <h2 class="fw-bold text-center py-4 text-light">Login</h2>
+                <?php 
+                    include('controller/controller_login.php');
+                ?>
                 <form action="" method="post">
                     <div class="mb-4">
                         <label for="usuario" class="form-label text-light">Usuario</label>
-                        <input type="text" class="form-control" id="usuario" name="usuario" placeholder="Ingrese su usuario" required>
+                        <input type="text" class="form-control" id="usuario" name="usuario" placeholder="Ingrese su usuario" require >
                     </div>
                     <div class="mb-4">
                         <label for="password" class="form-label text-light">Contraseña</label>
-                        <input type="text" class="form-control" id="password" name="password" placeholder="Ingrese su contraseña" required>
+                        <input type="password" class="form-control" id="password" name="password" placeholder="Ingrese su contraseña" >
                     </div>
-                    <div class="view">
-                        <div class="fas fa-eye verPassword"></div>
+                    
+                    <div class="d-grid pt-3 pb-5">
+                        <button type="submit" class="btn btn-primary" name="btnLogin" id="btnLogin">Iniciar Sesión</button>
                     </div>
-                    <div class="d-grid pb-5">
-                        <button type="submit" class="btn btn-primary" name="btnLogin" id="btnLogin">Ingresar</button>
-                    </div>
+                   
                 </form>
             </div>
         </div>
-    </div>
-
-    
+    </div>    
 </body>
-
 </html>

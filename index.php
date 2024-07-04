@@ -1,3 +1,9 @@
+<?php
+session_start();
+if (empty($_SESSION['id_usuario'])) {
+    header('Location: login.php');
+}    
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,6 +16,21 @@
     <title>Cobranzas y Cartera</title>
 </head>
 <body>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <div class="container text-light">
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        
+                    </li>
+                </ul>
 
+            </div>
+            <?php
+            echo $_SESSION['nombre_empleado'].' '.$_SESSION['apellido_empleado'];
+            ?>
+        </div>
+    </nav>
+    
 </body>
 </html>

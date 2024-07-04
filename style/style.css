@@ -16,3 +16,7 @@ body{
     background-image: url(../img/fondo-login.png);
     background-position: center center;
 }
+
+.alert-danger{
+    height: 10px;
+}

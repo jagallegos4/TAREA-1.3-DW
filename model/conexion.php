@@ -1,19 +1,19 @@
 <?php
-// $servername = "localhost";
-// $username = "root";
-// $password = "";
-// $dbname = "bd_nomina";
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "bd_nomina";
 
-// // Crear conexión
-// $conn = new mysqli($servername, $username, $password, $dbname);
+// Crear conexión
+$conn = new mysqli($servername, $username, $password, $dbname);
 
-// // Verificar conexión
-// if ($conn->connect_error) {
-//   die("La conexión falló: " . $conn->connect_error);
-// }
-// echo "Conexión exitosa";
+// Verificar conexión
+if ($conn->connect_error) {
+  die("La conexión falló: " . $conn->connect_error);
+}
+#echo "Conexión exitosa";
 
-class Database {
+/*class Database {
     private $connections = [];
 
     public function __construct($configs) {
@@ -49,13 +49,14 @@ $configs = [
         'password' => '',
         'database' => 'bd_nomina'
     ],
-    // 'db2' => [
-    //     'host' => 'localhost',
-    //     'username' => 'root',
-    //     'password' => '',
-    //     'database' => 'database2'
-    // ]
+    'db2' => [
+        'host' => 'localhost',
+        'username' => 'root',
+        'password' => '',
+        'database' => 'bd_cobranzas'
+    ]
 ];
 
 $db = new Database($configs);
+*/
 ?>
