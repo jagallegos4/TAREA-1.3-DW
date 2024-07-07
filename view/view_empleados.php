@@ -13,7 +13,7 @@ if (empty($_SESSION['id_usuario'])) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">  
     <link rel="icon" href="../img/navegador.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="../style/style.css">
     <title>Gestionar Empleados</title>
 </head>
 <body>
@@ -55,8 +55,49 @@ if (empty($_SESSION['id_usuario'])) {
                         
         </div>
     </nav>
-    
-    
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <form action="" method="post">
+                    <h1 class="text-center">
+                        Regoitrar Nuevo Empleado  
+                    </h1>
+                    <div class="mb-3">
+                        <input type="text" name="nombre" id="nombre" class="form-control-sm" placeholder="Nombre" required>
+                    </div>
+                    <div class="mb-3">
+                        <input type="text" name="apellido" id="apellido" class="form-control-sm" placeholder="Apellido" required>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-6">
+                <h1 class="text-center mt-5">Gestionar Empleados</h1>
+                <div class="d-flex justify-content-center">
+                    <a href="view_nuevo_empleado.php" class="btn btn-primary mt-3">Nuevo Empleado</a>
+                </div>
+                <table class="table table-striped mt-3">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>Correo</th>
+                            <th>Usuario</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Carlos</td>
+                            <td>Sanchez</td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
 
