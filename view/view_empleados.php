@@ -4,7 +4,6 @@ if (empty($_SESSION['id_usuario'])) {
     header('Location: login.php');
 }    
 ?>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -14,10 +13,10 @@ if (empty($_SESSION['id_usuario'])) {
     <link rel="icon" href="../img/navegador.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="../style/style.css">
+    <script src="https://kit.fontawesome.com/7aaabef60b.js" crossorigin="anonymous"></script>
     <title>Gestionar Empleados</title>
 </head>
 <body>
-
     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
         <div class="container">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -56,50 +55,87 @@ if (empty($_SESSION['id_usuario'])) {
         </div>
     </nav>
     <div class="container">
+        <h3 class="text-center text-light">Empleados</h3>
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-3">
+            <h4 class="text-center text-light mb-3">Nuevo Empleado</h4>
                 <form action="" method="post">
-                    <h1 class="text-center">
-                        Regoitrar Nuevo Empleado  
-                    </h1>
-                    <div class="mb-3">
-                        <input type="text" name="nombre" id="nombre" class="form-control-sm" placeholder="Nombre" required>
+                    <div class="mb-2">
+                        <input type="text" name="nombreEmpleado" id="nombreEmpleado" class="form-control-sm w-100" placeholder="Nombre" required>
                     </div>
-                    <div class="mb-3">
-                        <input type="text" name="apellido" id="apellido" class="form-control-sm" placeholder="Apellido" required>
+                    <div class="mb-2">
+                        <input type="text" name="apellido" id="apellido" class="form-control-sm w-100" placeholder="Apellido" required>
                     </div>
-                </form>
+                    <div class="mb-2">
+                        <input type="number" name="cedula" id="cedula" class="form-control-sm w-100" placeholder="Cedula" required>
+                    </div>
+                    <div class="mb-2">
+                        <input type="email" name="email" id="email" class="form-control-sm w-100" placeholder="Correo electrónico">
+                    </div>
+                    <div class="mb-2">
+                        <input type="number" name="telefono" id="telefono" class="form-control-sm w-100" placeholder="Teléfono">
+                    </div>
+                    <div class="mb-2">
+                        <select name="idSucursal" id="idSucursal" class="form-select-sm text-center w-50" required>
+                            <option value="" disabled selected hidden class="form-select-sm text-center">--Sucursal--</option>
+                            <?php 
+                            include ("../includes/listarSucursales.php");
+                            ?>
+                        </select>
+                    </div>
+                    <input type="submit" class="btn btn-outline-light fw-bold" name="btnGuardar" id="btnGuardar" value="Guardar">
+                    <div class="mb-2">
+                        <?php
+                        include ("../controller/controller_registrarEmpleado.php");
+                        ?>
+                    </div>
+                </form>                   
             </div>
-            <div class="col-md-6">
-                <h1 class="text-center mt-5">Gestionar Empleados</h1>
-                <div class="d-flex justify-content-center">
-                    <a href="view_nuevo_empleado.php" class="btn btn-primary mt-3">Nuevo Empleado</a>
-                </div>
-                <table class="table table-striped mt-3">
+            <div class="col-md-9 d-md-block d-none">
+                <h4 class="text-center mb-3 text-light">Lista de Empleados</h4>
+                <?php
+                    include ('../controller/controller_delateEmpleado.php')
+                ?>
+                <table class="table table-striped table-sm table-dark rounded d-md-block">
                     <thead>
                         <tr>
                             <th>Nombre</th>
                             <th>Apellido</th>
+                            <th>Cédula</th>
                             <th>Correo</th>
-                            <th>Usuario</th>
+                            <th>Teléfono</th>
+                            <th>Sucursal</th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Carlos</td>
-                            <td>Sanchez</td>
-                            <td></td>
-                        </tr>
+                    <?php
+                    include ('../model/conexion.php');
+                    $sql = "select e.id_empleado,e.nombre_empleado, e.apellido_empleado, e.cedula_empleado, e.telefono_empleado, e.email, s.nombre_sucursal from empleados e inner join sucursal s on e.id_sucursal = s.id_sucursal;";
+                    $result = $conn->query($sql);
+                    if ($result->num_rows > 0) {
+                        while ($row = $result->fetch_assoc()) {
+                            echo '<tr>';
+                            echo '<td>'.$row['nombre_empleado'].'</td>';
+                            echo '<td>'.$row['apellido_empleado'].'</td>';
+                            echo '<td>'.$row['cedula_empleado'].'</td>';
+                            echo '<td>'.$row['email'].'</td>';
+                            echo '<td>'.$row['telefono_empleado'].'</td>';
+                            echo '<td>'.$row['nombre_sucursal'].'</td>';
+                            echo '<td>
+                            <a href="view_updateEmpleado.php?id='.$row['id_empleado'].'" class="btn btn-outline-warning btn-sm"><i class="fa-regular fa-pen-to-square"></i></a> 
+                            <a onclick="return eliminar()" href="view_empleados.php?id='.$row['id_empleado'].'" class="btn btn-outline-danger btn-sm"><i class="fa-solid fa-trash"></i></a>
+                            </td>';
+                            echo '</tr>';
+                        }
+                    }        
+                    ?>
                     </tbody>
+                    
                 </table>
             </div>
-
         </div>
     </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-
-
+    <script src="../js/script.js"></script>
 </body>
 </html>

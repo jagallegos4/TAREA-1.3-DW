@@ -1,4 +1,6 @@
 <?php
+#function conectar(){
+
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -59,4 +61,6 @@ $configs = [
 
 $db = new Database($configs);
 */
+return $conn;
+#}
 ?>

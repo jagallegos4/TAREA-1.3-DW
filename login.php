@@ -24,6 +24,7 @@ include('model/conexion.php');
                 </div>
                 <h2 class="fw-bold text-center py-4 text-light">Login</h2>
                 <?php 
+                    
                     include('controller/controller_login.php');
                 ?>
                 <form action="" method="post">
